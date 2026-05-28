@@ -1,0 +1,4 @@
+# Minimal deployment snapshot for Streamlit Cloud
+*.pyc
+__pycache__/
+.venv/
