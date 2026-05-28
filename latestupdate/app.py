@@ -273,6 +273,8 @@ st.markdown("""
 
 # ─── Load model ──────────────────────────────────────────────────────────────
 model_ok = True
+scaler = None
+model = None
 try:
     scaler = load_scaler()
     model  = load_model()
@@ -302,6 +304,8 @@ uploaded_file = st.file_uploader("Drop molecular feature CSV here", type=["csv"]
 # ─── Prediction ──────────────────────────────────────────────────────────────
 if uploaded_file is not None and model_ok:
     try:
+        assert scaler is not None
+        assert model is not None
         df = pd.read_csv(uploaded_file)
         if df.shape[1] == 1645:
             df = df.iloc[:, :-1]
